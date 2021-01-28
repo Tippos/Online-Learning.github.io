@@ -1,18 +1,18 @@
 @extends('layout')
 @section('content')
-    <table  class="table table-hover style-table">
+    <table class="table table-hover">
         <th>ID</th>
         <th>Full Name</th>
         <th>Avatar</th>
         <th>Birth Day</th>
         <th>Job</th>
+        <th>Phone Number</th>
+        <th>Facebook</th>
         <th>Gender</th>
+        <th>Country</th>
         <th>Role</th>
         <th>Status</th>
         <th>Edit</th>
-        <th>Del</th>
-        <th>Detail</th>
-        @foreach($list_user as $user)
             <tr>
                 <td>{{$user->id}}</td>
                 <td>{{$user->fullName}}</td>
@@ -21,6 +21,14 @@
                 </td>
                 <td>{{date('d/m/y',$user->birthday)}}</td>
                 <td style="max-width: 100px;">{{$user->job}}</td>
+                <td>{{$user->phoneNumber}}</td>
+                <td>
+                    <a style="color:blue;" target="_blank"  href="{{$user->facebook}} " >
+                    <span class="d-inline-block text-truncate" style="max-width: 50px;">
+                            {{$user->facebook}}
+                    </span>
+                    </a >
+                </td>
                 <td>
                     @if($user->gender==1)
                         Male
@@ -28,6 +36,7 @@
                         Female
                     @endif
                 </td>
+                <td style="max-width: 100px;">{{$user->country}}</td>
                 <td>
                     @if($user->role==ROLE_USER_ADMIN)
                         Admin
@@ -52,15 +61,7 @@
                 <td>
                     <a style="color: cornflowerblue" href="">Edit</a>
                 </td>
-                <td>
-                    <a style="color: darkred" href="">Del</a>
-                </td>
-                <td>
-                    <a style="color: cyan" href="/getUser/{{$user->id}}">Detail</a>
-                </td>
-
             </tr>
-        @endforeach
     </table>
 
 @endsection

@@ -34,4 +34,9 @@ define('AVT_ARR',[
     "https://vsmcamp.com/wp-content/uploads/2020/11/JaZBMzV14fzRI4vBWG8jymplSUGSGgimkqtJakOV.jpeg",
     "https://scr.vn/wp-content/uploads/2020/07/%E1%BA%A2nh-%C4%91%E1%BA%A1i-di%E1%BB%87n-FB-m%E1%BA%B7c-%C4%91%E1%BB%8Bnh-n%E1%BB%AF.jpg"
 ]);
+
+
+define('SC_DATA_INVALID',400);
+define('SC_SERVER_ERROR',500);
+define('SC_QUERRY_ERROR',422);
 ?>

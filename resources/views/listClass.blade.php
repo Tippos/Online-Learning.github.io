@@ -1,6 +1,6 @@
 @extends('layout')
 @section('content')
-    <table class="table table-hover">
+    <table  class="table table-hover style-table">
         <th>ID</th>
         <th>Name</th>
         <th>Avatar</th>

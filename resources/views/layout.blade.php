@@ -24,11 +24,11 @@
         .header img {
             width: 200px;
         }
-        .body-web .right{
+        .body-web .left{
             font-family: Apple;
             width: 200px;
         }
-        .body-web .right .style-hover:hover{
+        .body-web .left .style-hover:hover{
             background-color: lightblue;
         }
         .content{
@@ -62,6 +62,10 @@
         .home .home-left .bot:hover{
             transform: scale(1.01);
         }
+        .style-table{
+            width: 900px;
+            margin: auto;
+        }
     </style>
 </head>
 <body class="Tippo">
@@ -72,13 +76,13 @@
 
 </div>
 <div class="body-web">
-    <div class="right">
+    <div class="left">
         <div class="d-flex align-items-start">
             <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a class="nav-link {{checkActiveMenu("/home")}} style-hover " href="/home">Home</a>
-                <a class="nav-link {{checkActiveMenu("/user")}} style-hover" href="/user">Users List</a>
-                <a class="nav-link style-hover{{checkActiveMenu("/subject")}}  " href="/subject" >Subject</a>
-                <a class="nav-link {{checkActiveMenu("/class")}} style-hover" href="/class" >Classes </a>
+                <a class="nav-link {{checkActiveMenu("/listUser")}} style-hover" href="/listUser">Users List</a>
+                <a class="nav-link {{checkActiveMenu("/listSubject")}} style-hover " href="/listSubject" >Subject</a>
+                <a class="nav-link {{checkActiveMenu("/listClass")}} style-hover" href="/listClass" >Classes </a>
 
             </div>
             <div class="tab-content" id="v-pills-tabContent">

@@ -15,13 +15,25 @@ use App\Http\Controllers\CourseRqsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/user', [UsersController::class, 'getListUser']);
-Route::get('/class',[ClassesController::class, 'getListClass']);
-Route::get('/subject',[SubjectsController::class,'getListSubject']);
+// lay danh sach
+Route::get('/listUser', [UsersController::class, 'getListUser']);
+Route::get('/listClass',[ClassesController::class, 'getListClass']);
+Route::get('/listSubject',[SubjectsController::class,'getListSubject']);
+// lay thong tin tung thang
+Route::get('/getUser/{id}', [UsersController::class, 'getUser']);
 
-Route::post('/user', [UsersController::class, 'addUser']);
-Route::post('/class', [ClassesController::class, 'addClass']);
-Route::post('/subject', [SubjectsController::class, 'addSubject']);
+// them
+Route::post('/addUser', [UsersController::class, 'addUser']);
+Route::post('/addClass', [ClassesController::class, 'addClass']);
+Route::post('/addSubject', [SubjectsController::class, 'addSubject']);
+
+// chinh sua
+Route::put('/upUser/{id}',[UsersController::class, 'upUser']);
+Route::put('/upClass/{id}', [ClassesController::class, 'upClass']);
+Route::put('/upSubject/{id}', [SubjectsController::class, 'upSubject']);
+
+// xoa
+Route::delete('/delUser/{id}',[UsersController::class, 'delUser']);
 
 
 Route::get('',function(){
