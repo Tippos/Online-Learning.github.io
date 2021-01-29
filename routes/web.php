@@ -34,6 +34,8 @@ Route::put('/upSubject/{id}', [SubjectsController::class, 'upSubject']);
 
 // xoa
 Route::delete('/delUser/{id}',[UsersController::class, 'delUser']);
+Route::delete('/delClass/{id}', [ClassesController::class, 'delClass']);
+Route::delete('/delSubject/{id}', [SubjectsController::class, 'delSubject']);
 
 
 Route::get('',function(){

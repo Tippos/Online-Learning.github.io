@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Subjects;
 use App\Models\Users;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
@@ -23,8 +24,6 @@ class UsersController extends Controller
         //Lay du lieu tu database
         $user = Users::find($id);
         return view('userDetail', compact('user'));
-
-
     }
 
     public function addUser(Request $request)
@@ -48,19 +47,27 @@ class UsersController extends Controller
                 "data" => $validate->errors()->keys()],
                 SC_DATA_INVALID);
         }
-        $add_us = new Users();
-        $add_us->fullName = $request->fullName;
-        $add_us->birthday = $request->birthday;
-        $add_us->email = $request->email;
-        $add_us->phoneNumber = $request->phoneNumber;
-        $add_us->job = $request->job;
-        $add_us->avatar = $request->avatar;
-        $add_us->facebook = $request->facebook;
-        $add_us->gender = $request->gender;
-        $add_us->country = $request->country;
-        $add_us->role = $request->role;
-        $add_us->status = $request->status;
-        $add_us->save();
+        try {
+            $add_us = new Users();
+            $add_us->fullName = $request->fullName;
+            $add_us->birthday = $request->birthday;
+            $add_us->email = $request->email;
+            $add_us->phoneNumber = $request->phoneNumber;
+            $add_us->job = $request->job;
+            $add_us->avatar = $request->avatar;
+            $add_us->facebook = $request->facebook;
+            $add_us->gender = $request->gender;
+            $add_us->country = $request->country;
+            $add_us->role = $request->role;
+            $add_us->status = $request->status;
+            $add_us->save();
+        } catch (ModelNotFoundException $ex) {
+            return response()->json([], SC_QUERRY_ERROR); //user not found
+        } catch (\Exception $ex) {
+            return response()->json([
+                "meta" => ["code" => "SERVER_ERROR", "msg" => "SERVER ERROR"],
+                "data" => $ex], SC_SERVER_ERROR); //anything went wrong
+        }
         dd($add_us->toArray());
     }
 
@@ -86,21 +93,21 @@ class UsersController extends Controller
                 SC_DATA_INVALID);
         }
         try {
-            $up = Users::find($id);
-            $up->fullName = $request->fullName;
-            $up->birthday = $request->birthday;
-            $up->email = $request->email;
-            $up->phoneNumber = $request->phoneNumber;
-            $up->job = $request->job;
-            $up->avatar = $request->avatar;
-            $up->facebook = $request->facebook;
-            $up->gender = $request->gender;
-            $up->country = $request->country;
-            $up->role = $request->role;
-            $up->status = $request->status;
-            $up->save();
+            $up_us = Users::find($id);
+            $up_us->fullName = $request->fullName;
+            $up_us->birthday = $request->birthday;
+            $up_us->email = $request->email;
+            $up_us->phoneNumber = $request->phoneNumber;
+            $up_us->job = $request->job;
+            $up_us->avatar = $request->avatar;
+            $up_us->facebook = $request->facebook;
+            $up_us->gender = $request->gender;
+            $up_us->country = $request->country;
+            $up_us->role = $request->role;
+            $up_us->status = $request->status;
+            $up_us->save();
             dd('Update Completed');
-        } catch (ModelNotFoundException $ex){
+        } catch (ModelNotFoundException $ex) {
             return response()->json([], SC_QUERRY_ERROR); //user not found
         } catch (\Exception $ex) {
             return response()->json([
@@ -111,9 +118,17 @@ class UsersController extends Controller
 
     public function delUser($id)
     {
-        $del = Users::find($id);
-        $del->delete();
-        dd("Delete Completed");
+        try {
+
+            $del_us = Users::find($id);
+            $del_us->delete();
+        } catch (ModelNotFoundException $ex) {
+            return response()->json([], SC_QUERRY_ERROR); //user not found
+        } catch (\Exception $ex) {
+            return response()->json([
+                "meta" => ["code" => "SERVER_ERROR", "msg" => "SERVER ERROR"],
+                "data" => $ex], SC_SERVER_ERROR); //anything went wrong
+        }
     }
 
 }

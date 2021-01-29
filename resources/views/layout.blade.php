@@ -66,6 +66,20 @@
             width: 900px;
             margin: auto;
         }
+        .deltail{
+            display: flex;
+            width: 700px;
+        }
+
+        .deltail .left{
+            width: 500px;
+            font-size: 15px;
+        }
+        .style-img-deltail {
+            width: 200px;
+            border-radius: 20px;
+        }
+
     </style>
 </head>
 <body class="Tippo">
